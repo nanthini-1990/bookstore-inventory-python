@@ -1,0 +1,67 @@
+Working with Files and JSON in Python
+Bookstore Inventory Management Assignment
+
+Student Name: Nanthini M
+Course: Python Programming
+
+Introduction
+
+JSON (JavaScript Object Notation) is a lightweight format used to store and exchange data. 
+Python provides a built-in module called "json" which allows us to read and write JSON files.
+
+In this assignment, we perform the following tasks:
+1. Read the inventory from a JSON file.
+2. Add a new book to the inventory.
+3. Save the updated inventory back to the file.
+4. Display the updated inventory.
+
+Task 1 – Read the Inventory
+
+We open the file inventory.json using a "with" statement and load the data using json.load(). 
+The total number of books is printed using the len() function.
+
+Task 2 – Update and Save the Inventory
+
+A new book dictionary is created and appended to the inventory list using append().
+Then the updated inventory is written back to the JSON file using json.dump() with indent=4.
+
+Task 3 – Display the Inventory
+
+The updated JSON file is read again and each book's details are printed using a loop.
+
+-----------------------------------------------------
+
+Python Code
+
+import json
+
+# Read inventory
+with open("inventory.json", "r") as file:
+    inventory = json.load(file)
+
+print("Total number of books:", len(inventory))
+
+# Add new book
+new_book = {
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "price": 14.99,
+    "in_stock": True
+}
+
+inventory.append(new_book)
+
+# Save updated inventory
+with open("inventory.json", "w") as file:
+    json.dump(inventory, file, indent=4)
+
+print("Book added successfully")
+
+# Display inventory
+with open("inventory.json", "r") as file:
+    updated_inventory = json.load(file)
+
+for book in updated_inventory:
+    print(f"Title: {book['title']} | Author: {book['author']} | Price: ${book['price']}")
+
+Conclusion: This assignment demonstrates how Python can read, update, and write JSON files using proper file handling practices.
